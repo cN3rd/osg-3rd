@@ -1,0 +1,21 @@
+[submodule "repos/zlib-ng"]
+	path = repos/zlib-ng
+	url = https://github.com/zlib-ng/zlib-ng.git
+[submodule "repos/minizip-ng"]
+	path = repos/minizip-ng
+	url = https://github.com/zlib-ng/minizip-ng.git
+[submodule "repos/libpng"]
+	path = repos/libpng
+	url = https://github.com/glennrp/libpng.git
+[submodule "repos/curl"]
+	path = repos/curl
+	url = https://github.com/curl/curl.git
+[submodule "repos/c-ares"]
+	path = repos/c-ares
+	url = https://github.com/c-ares/c-ares.git
+[submodule "repos/libtiff"]
+	path = repos/libtiff
+	url = https://gitlab.com/libtiff/libtiff.git
+[submodule "repos/jpeg-cmake"]
+	path = repos/jpeg-cmake
+	url = https://github.com/csparker247/jpeg-cmake.git
