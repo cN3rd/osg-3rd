@@ -8,7 +8,7 @@ cmake -G"Ninja Multi-Config" -Bbuild/minizip -DZLIB_ROOT="$(pwd)/build/zlib/inst
 cmake --build build/minizip --target install --config Debug
 cmake --build build/minizip --target install --config Release
 
-cmake -G"Ninja Multi-Config" -Bbuild/libjpeg -DCMAKE_INSTALL_PREFIX="$(pwd)/build/libjpeg/install" -DCMAKE_DEBUG_POSTFIX="d" repos/jpeg-cmake
+cmake -G"Ninja Multi-Config" -Bbuild/libjpeg -DCMAKE_INSTALL_PREFIX="$(pwd)/build/libjpeg/install" -DBUILD_STATIC_LIBS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_DEBUG_POSTFIX="d" repos/jpeg-cmake
 cmake --build build/libjpeg --target install --config Debug
 cmake --build build/libjpeg --target install --config Release
 
