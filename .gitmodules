@@ -22,3 +22,6 @@
 [submodule "repos/freetype"]
 	path = repos/freetype
 	url = https://github.com/freetype/freetype.git
+[submodule "repos/nghttp2"]
+	path = repos/nghttp2
+	url = https://github.com/nghttp2/nghttp2.git

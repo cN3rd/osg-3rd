@@ -9,4 +9,5 @@ cp -r build/libtiff/install/* install
 cp -r build/c-ares/install/* install
 cp -r build/curl/install/* install
 cp -r build/freetype/install/* install
+cp -r build/nghttp2/install/* install
 tar -zcvf install.tar.gz install

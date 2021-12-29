@@ -28,6 +28,10 @@ cmake -G"Ninja Multi-Config" -Bbuild/libtiff -DBUILD_SHARED_LIBS=OFF -DCMAKE_INS
 cmake --build build/libtiff --target install --config Debug
 cmake --build build/libtiff --target install --config Release
 
+cmake -G"Ninja Multi-Config" -Bbuild/nghttp2 -DENABLE_STATIC_LIB=ON -DENABLE_SHARED_LIB=OFF -DCMAKE_INSTALL_PREFIX="$(pwd)/build/nghttp2/install" -DCMAKE_DEBUG_POSTFIX="d" repos/nghttp2/
+cmake --build build/nghttp2 --target install --config Debug
+cmake --build build/nghttp2 --target install --config Release
+
 cmake -G"Ninja Multi-Config" -Bbuild/c-ares -DCARES_SHARED=OFF -DCARES_STATIC=ON -DCMAKE_INSTALL_PREFIX="$(pwd)/build/c-ares/install" -DCMAKE_DEBUG_POSTFIX="d" repos/c-ares
 cmake --build build/c-ares --target install --config Debug
 cmake --build build/c-ares --target install --config Release
