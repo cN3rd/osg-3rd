@@ -8,3 +8,4 @@ cp -r build/libjpeg/install/* install
 cp -r build/libtiff/install/* install
 cp -r build/c-ares/install/* install
 cp -r build/curl/install/* install
+tar -zcvf install.tar.gz install
