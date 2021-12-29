@@ -45,6 +45,13 @@ jobs:
           sudo apt-get install ninja-build
         shell: bash
 
+      - if: startsWith(matrix.os, 'ubuntu')
+        name: Install GLEW dependencies (Linux)
+        run: |
+          sudo apt-get update
+          sudo apt-get install build-essential libxmu-dev libxi-dev libgl-dev libgl1-mesa-dev
+        shell: bash
+
       - if: startsWith(matrix.os, 'windows')
         name: Install Ninja (Windows)
         run: |
