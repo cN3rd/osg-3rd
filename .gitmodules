@@ -19,3 +19,6 @@
 [submodule "repos/jpeg-cmake"]
 	path = repos/jpeg-cmake
 	url = https://github.com/csparker247/jpeg-cmake.git
+[submodule "repos/freetype"]
+	path = repos/freetype
+	url = https://github.com/freetype/freetype.git

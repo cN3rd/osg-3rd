@@ -32,6 +32,10 @@ cmake -G"Ninja Multi-Config" -Bbuild/c-ares -DCARES_SHARED=OFF -DCARES_STATIC=ON
 cmake --build build/c-ares --target install --config Debug
 cmake --build build/c-ares --target install --config Release
 
+cmake -G"Ninja Multi-Config" -Bbuild/freetype -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="$(pwd)/build/freetype/install" -DCMAKE_DEBUG_POSTFIX="d" repos/freetype
+cmake --build build/freetype --target install --config Debug
+cmake --build build/freetype --target install --config Release
+
 # TODO: add OpenSSL
 cmake -G"Ninja Multi-Config" -Bbuild/curl -DCURL_ZLIB=True -DZLIB_ROOT="$(pwd)/build/zlib/install" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="$(pwd)/build/curl/install" -DCMAKE_DEBUG_POSTFIX="d" repos/curl
 cmake --build build/curl --target install --config Debug

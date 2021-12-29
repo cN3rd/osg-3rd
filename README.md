@@ -14,3 +14,4 @@ This repo is currently hardwired to build static versions of the libraries. It m
 | libtiff    | 4.3.0   |
 | c-ares     | 1.18.1  |
 | curl       | 7.80.0  |
+| freetype   | 2.11.1  |
