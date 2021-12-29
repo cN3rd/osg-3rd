@@ -40,7 +40,7 @@ cmake -G"Ninja Multi-Config" -Bbuild/freetype -DBUILD_SHARED_LIBS=OFF -DCMAKE_IN
 cmake --build build/freetype --target install --config Debug
 cmake --build build/freetype --target install --config Release
 
-cmake -G"Ninja Multi-Config" -Bbuild/glew -DGLEW_DIR="repos/glew/auto" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="$(pwd)/build/glew/install" -DCMAKE_DEBUG_POSTFIX="d" repos/glew/
+cmake -G"Ninja Multi-Config" -Bbuild/glew -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="$(pwd)/build/glew/install" -DCMAKE_DEBUG_POSTFIX="d" repos/glew/build/cmake
 cmake --build build/glew --target install --config Debug
 cmake --build build/glew --target install --config Release
 
