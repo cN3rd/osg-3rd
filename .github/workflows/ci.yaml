@@ -1,0 +1,86 @@
+name: CMake
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
+    # You can convert this to a matrix build if you need cross-platform coverage.
+    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-2019, windows-2022]
+        include:
+          - os: ubuntu-latest
+            artifact-filename: osg-3rd-linux-x86_64.tar.gz
+          - os: windows-2019
+            artifact-filename: osg-3rd-msvc-2019-x86_64.tar.gz
+          - os: windows-2022
+            artifact-filename: osg-3rd-msvc-2022-x86_64.tar.gz
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Chmod Files
+        run: |
+          chmod +x ./fetch.sh
+          chmod +x ./build.sh
+          chmod +x ./collect.sh
+
+      - if: startsWith(matrix.os, 'ubuntu')
+        name: Install Ninja (Linux)
+        run: |
+          sudo apt-get update
+          sudo apt-get install ninja-build
+        shell: bash
+
+      - if: startsWith(matrix.os, 'windows')
+        name: Install Ninja (Windows)
+        run: |
+          Set-ExecutionPolicy RemoteSigned -scope CurrentUser -Force
+          iwr -useb get.scoop.sh | iex
+          scoop install ninja
+        shell: powershell
+
+      - name: Fetch other dependencies
+        run: ./fetch.sh
+        shell: bash
+
+      - if: startsWith(matrix.os, 'windows')
+        name: Setup MSVC environment (windows)
+        uses: seanmiddleditch/gha-setup-vsdevenv@v4
+
+      - if: startsWith(matrix.os, 'windows')
+        name: Build dependencies (Windows)
+        run: |
+          "C:\Program Files\Git\bin\bash.exe" build.sh
+        shell: cmd
+
+      - if: startsWith(matrix.os, 'ubuntu')
+        name: Build dependencies (Linux)
+        run: ./build.sh
+        shell: bash
+
+      - name: Copy to install directory
+        run: ./collect.sh
+        shell: bash
+
+      - name: Rename artifact to reflect platform
+        run: mv install.tar.gz ${{ matrix.artifact-filename }}
+        shell: bash
+
+      - uses: actions/upload-artifact@v2
+        name: Upload build artifact
+        with:
+          path: ${{ matrix.artifact-filename }}
