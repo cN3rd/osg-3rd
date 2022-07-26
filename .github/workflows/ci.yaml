@@ -56,7 +56,7 @@ jobs:
         name: Install Ninja (Windows)
         run: |
           Set-ExecutionPolicy RemoteSigned -scope CurrentUser -Force
-          iwr -useb get.scoop.sh | iex
+          iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
           scoop install ninja
         shell: powershell
 
